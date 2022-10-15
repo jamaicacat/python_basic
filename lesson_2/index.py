@@ -52,3 +52,8 @@ side_c = get_side_length('C')
 perimeter = calculate_triangle_perimeter(side_a, side_b, side_c)
 
 print(f'\nTriangle perimeter with sides A = {side_a}, B = {side_b}, C = {side_c} is: {perimeter}')
+
+if perimeter > 20:
+    print(f'The biggest side length is: {max([side_a, side_b, side_c])}')
+elif perimeter < 10:
+    print(f'The smallest side length is: {min([side_a, side_b, side_c])}')
