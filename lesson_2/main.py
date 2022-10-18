@@ -1,7 +1,6 @@
 import sys
 
-print('\nWelcome to triangle perimeter calculation program.')
-print('If you want to stop program execution, enter \'exit\'. \n')
+print('\nWelcome to triangle perimeter calculation program.\n')
 
 
 def get_side_length(side=''):
@@ -10,22 +9,11 @@ def get_side_length(side=''):
     if not side:
         raise Exception('Side name was not provided.')
     else:
-        while not result:
-            result = input(f'Input the "{side}" side length.: ')
-
-            if result == 'exit':
-                print('Exiting the program.')
-                sys.exit(1)
+        while result is None:
+            result = input(f'Input the "{side}" side length: ')
 
             try:
                 result = float(result)
-
-                if result == 0:
-                    print('Side length can\'t be equal to 0. Try again.')
-                    result = None
-                elif result < 0:
-                    print('Side length can\'t be less than 0. Try again.')
-                    result = None
 
             except:
                 print('Side length must be inputted as number.')
@@ -48,6 +36,11 @@ def calculate_triangle_perimeter(a=None, b=None, c=None):
 side_a = get_side_length('A')
 side_b = get_side_length('B')
 side_c = get_side_length('C')
+
+if side_a == 0 or side_b == 0 or side_c == 0:
+    print('\nThere are no triangles with sides equal to 0')
+    print('Exiting the program.')
+    sys.exit(1)
 
 perimeter = calculate_triangle_perimeter(side_a, side_b, side_c)
 
